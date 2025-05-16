@@ -8,7 +8,7 @@ def index():
 
 @app.route("/test")
 def test():
-    return render_template("testindex.html.")
+    return render_template("testindex.html.jinja2")
 
 @app.route("/user")
 def user():
