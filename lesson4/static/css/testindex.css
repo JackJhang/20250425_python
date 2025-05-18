@@ -114,58 +114,47 @@ footer {
     /* 設定頁尾與主要內容區域之間的垂直間距 */
     color: aliceblue;
     /* 設定頁尾的文字顏色為淺白色;*/
+
 }
 
 /* 響應式設計 (手機版) */
 @media (max-width: 768px) {
-
-    /* 當螢幕寬度小於等於 768px 時，套用以下樣式（手機版） */
     .nav-links {
         display: none;
-        /* 預設隱藏導覽連結，手機版點擊 MENU 按鈕才顯示 */
+        /* 初始狀態隱藏，由 JavaScript 控制顯示 */
         flex-direction: column;
-        /* 將導覽連結垂直排列 */
         align-items: flex-start;
-        /* 將導覽連結靠左對齊 */
         position: absolute;
-        /* 設定導覽連結的定位方式為 absolute，相對於 .navbar 定位 */
         top: 60px;
-        /* 設定導覽連結的垂直位置，從導覽列下方開始顯示 */
         right: 0;
-        /* 設定導覽連結的水平位置，從導覽列左側開始顯示 */
         background-color: #ddd;
-        /* 設定導覽連結的背景顏色，與導覽列相同 */
         width: 100%;
-        /* 設定導覽連結的寬度為 100% */
         padding: 10px 20px;
-        /* 設定導覽連結的內距 */
         z-index: 10;
-        /* 設定導覽連結的堆疊順序，確保它在其他元素之上 */
         max-width: 200px;
     }
 
     .nav-links li {
         margin-left: 0;
-        /* 移除原本的水平間距，因為現在是垂直排列 */
         margin-bottom: 10px;
-        /* 增加垂直間距，讓連結之間有空間 */
     }
 
     .menu-button {
         display: block;
-        /* 顯示 MENU 按鈕 */
+        background-color: #8400ff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        margin-left: 10px;
     }
 
     .navbar {
         flex-direction: row;
-        /* 確保 logo 和 MENU 按鈕在同一行 */
     }
 
     .navbar-right {
         flex-grow: 1;
-        /* 讓右側區域佔滿剩餘空間 */
         justify-content: flex-end;
-        /* 將 MENU 按鈕靠右對齊 */
     }
-
 }
