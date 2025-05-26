@@ -358,7 +358,7 @@ body {
 
 .hero-subtitle::after {
     right: -50px;
-    /* 原始碼中為 -50px */
+    /* 位於文字右側 */
 }
 
 .hero-title {
@@ -389,6 +389,8 @@ body {
     /* 使用 Flexbox 佈局 */
     margin-bottom: 10px;
     /* 底部間距 */
+    justify-content: center;
+    /* 水平居中 */
 }
 
 .search-tab {
@@ -528,7 +530,8 @@ body {
 .property-card-list {
     display: flex;
     /* 使用 Flexbox 佈局 */
-    /* transition 會在 JS 中動態控制，實現無限輪播的瞬間跳轉 */
+    transition: transform 0.5s ease-in-out;
+    /* 過渡效果 */
 }
 
 /* 輪播導覽箭頭 */
@@ -597,17 +600,18 @@ body {
     flex-shrink: 0;
     /* 不縮小 */
     width: calc(33.333% - 30px);
-    /* 大螢幕下顯示三張卡片，計算寬度 (30px 是左右 margin 總和) */
+    /* 大螢幕下顯示三張卡片，計算寬度 */
     max-width: 380px;
     /* 最大寬度 */
     text-align: left;
     /* 文字左對齊 */
-    /* transition 會在 JS 中動態控制，避免複製卡片跳轉時的動畫 */
+    transition: transform 0.3s ease;
+    /* 過渡效果 */
 }
 
-.property-card.original:hover {
+.property-card:hover {
     transform: translateY(-5px);
-    /* 原始卡片懸停時向上移動 */
+    /* 懸停時向上移動 */
 }
 
 .property-image-container {
@@ -854,11 +858,6 @@ body {
         /* 移除左右間距 */
         margin-bottom: 30px;
         /* 底部間距 */
-    }
-
-    .property-card:last-child {
-        /* 隱藏最後一張卡片的底部間距，避免輪播最後一張多餘空間 */
-        margin-bottom: 0;
     }
 }
 
