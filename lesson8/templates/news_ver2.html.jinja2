@@ -1,0 +1,75 @@
+{% extends "layout/base.html.jinja2" %}
+{% block title %}
+職能發展學院-最新消息
+{% endblock %}
+
+{% block main %}
+<h1>{{ self.title() }}</h1>
+{{ rows }}
+
+<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
+    <thead style="background-color: #f2f2f2;">
+        <tr>
+            {% for colname in colnames %}
+            <th>{{ colname }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in rows %}
+        <tr>
+            {% for col in row %}
+            <td>{{ col }}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<br>
+<div class="accordion-container">
+</div>
+<br>
+{# 以下是整合 Bootstrap 5 表格美化的完整方案，保留動態欄位名稱功能 #}
+
+<div class="container mt-4">
+    <h1 class="mb-4">{{ self.title() }}</h1>
+
+    <div class="table-responsive"> {# 添加響應式容器 #}
+        <table class="table table-striped table-hover table-bordered align-middle">
+            <thead class="table-primary"> {# 使用 Bootstrap 的顏色類別 #}
+                <tr>
+                    {% for colname in colnames %}
+                    <th scope="col" class="text-nowrap">{{ colname }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    {% for col in row %}
+                    <td class="text-wrap">{{ col }}</td> {# 自動換行處理 #}
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{# 添加 DataTables 功能 #}
+
+
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('table').DataTable({
+            ordering: true,
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.13.6/i18n/zh-HANT.json'
+            }
+        });
+    });
+</script>
+
+{{ super() }}
+{% endblock %}
