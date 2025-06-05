@@ -1,0 +1,967 @@
+/* 通用樣式 */
+body {
+    margin: 0;
+    /* 移除預設的邊距 */
+    font-family: Arial, sans-serif;
+    /* 設定字體 */
+    color: #333;
+    /* 預設文字顏色 */
+}
+
+.container {
+    max-width: 1200px;
+    /* 內容最大寬度 */
+    margin: 0 auto;
+    /* 水平居中 */
+    padding: 0 15px;
+    /* 左右內邊距 */
+}
+
+/* 按鈕通用樣式 */
+.btn {
+    padding: 10px 20px;
+    /* 內邊距 */
+    border: none;
+    /* 無邊框 */
+    border-radius: 5px;
+    /* 圓角 */
+    cursor: pointer;
+    /* 滑鼠指標為手型 */
+    font-size: 16px;
+    /* 字體大小 */
+    transition: background-color 0.3s ease;
+    /* 背景色過渡效果 */
+}
+
+.btn-primary {
+    background-color: transparent;
+    /* 背景透明 */
+    color: white;
+    /* 文字白色 */
+    border: 1px solid white;
+    /* 白色邊框 */
+}
+
+.btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* 懸停時背景變淺 */
+}
+
+/* 導覽列樣式 */
+.navbar {
+    background-color: #222529;
+    /* 深灰色背景 */
+    padding: 15px 0;
+    /* 上下內邊距 */
+    color: white;
+    /* 文字白色 */
+    position: relative;
+    /* 相對定位，用於漢堡選單 */
+}
+
+.navbar .container {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    justify-content: space-between;
+    /* 元素分散對齊 */
+    align-items: center;
+    /* 垂直居中對齊 */
+}
+
+.navbar-brand {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    align-items: center;
+    /* 垂直居中對齊 */
+    font-size: 24px;
+    /* 字體大小 */
+    font-weight: bold;
+    /* 字體加粗 */
+}
+
+.navbar-brand .logo-img {
+    margin-right: 10px;
+    /* Logo 右側間距 */
+    border-radius: 50%;
+    /* 圓形 Logo */
+}
+
+.navbar-nav {
+    list-style: none;
+    /* 移除列表符號 */
+    margin: 0;
+    /* 移除邊距 */
+    padding: 0;
+    /* 移除內邊距 */
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+}
+
+.navbar-nav .nav-item {
+    margin-left: 30px;
+    /* 導覽項目左側間距 */
+    position: relative;
+    /* 用於下拉選單定位 */
+}
+
+.navbar-nav .nav-link {
+    color: white;
+    /* 連結文字白色 */
+    text-decoration: none;
+    /* 無底線 */
+    font-size: 16px;
+    /* 字體大小 */
+    transition: color 0.3s ease;
+    /* 顏色過渡效果 */
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ff9800;
+    /* 懸停時變橘色 */
+}
+
+/* 下拉選單樣式 */
+.navbar-nav .nav-item.has-dropdown .dropdown-menu {
+    display: none;
+    /* 預設隱藏 */
+    position: absolute;
+    /* 絕對定位 */
+    top: 100%;
+    /* 位於父元素下方 */
+    left: 0;
+    /* 與父元素左側對齊 */
+    background-color: #2e3236;
+    /* 深色背景 */
+    list-style: none;
+    /* 移除列表符號 */
+    padding: 10px 0;
+    /* 上下內邊距 */
+    margin: 0;
+    /* 移除邊距 */
+    min-width: 150px;
+    /* 最小寬度 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* 陰影 */
+    z-index: 1000;
+    /* 確保在最上層 */
+    border-radius: 5px;
+    /* 圓角 */
+}
+
+.navbar-nav .nav-item.has-dropdown:hover .dropdown-menu {
+    display: block;
+    /* 懸停時顯示 */
+}
+
+.dropdown-menu li a {
+    color: white;
+    /* 連結文字白色 */
+    padding: 10px 20px;
+    /* 內邊距 */
+    text-decoration: none;
+    /* 無底線 */
+    display: block;
+    /* 讓連結佔滿整個寬度 */
+}
+
+.dropdown-menu li a:hover {
+    background-color: #3f4448;
+    /* 懸停時背景變色 */
+}
+
+.navbar-actions {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    align-items: center;
+    /* 垂直居中對齊 */
+}
+
+.navbar-actions .contact-phone {
+    margin-right: 20px;
+    /* 右側間距 */
+    font-size: 16px;
+    /* 字體大小 */
+}
+
+.navbar-actions .user-icon {
+    color: white;
+    /* 圖示白色 */
+    font-size: 20px;
+    /* 圖示大小 */
+    margin-right: 20px;
+    /* 右側間距 */
+    text-decoration: none;
+    /* 無底線 */
+}
+
+/* 漢堡選單樣式 (預設隱藏，小螢幕顯示) */
+.hamburger-menu {
+    display: none;
+    /* 預設隱藏 */
+    font-size: 24px;
+    /* 圖示大小 */
+    cursor: pointer;
+    /* 滑鼠指標為手型 */
+}
+
+/* 手機版導覽選單疊層 */
+.mobile-nav-overlay {
+    display: none;
+    /* 預設隱藏 */
+    position: absolute;
+    /* 絕對定位 */
+    top: 100%;
+    /* 位於導覽列下方 */
+    left: 0;
+    /* 與左側對齊 */
+    width: 100%;
+    /* 佔滿寬度 */
+    background-color: #222529;
+    /* 深灰色背景 */
+    padding: 20px 0;
+    /* 上下內邊距 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* 陰影 */
+    z-index: 999;
+    /* 確保在其他內容之上 */
+}
+
+.mobile-nav-overlay.active {
+    display: block;
+    /* 啟用時顯示 */
+}
+
+.mobile-navbar-nav {
+    list-style: none;
+    /* 移除列表符號 */
+    margin: 0;
+    /* 移除邊距 */
+    padding: 0;
+    /* 移除內邊距 */
+    text-align: center;
+    /* 文字居中 */
+}
+
+.mobile-navbar-nav .nav-item {
+    margin-bottom: 15px;
+    /* 底部間距 */
+}
+
+.mobile-navbar-nav .nav-link,
+.mobile-navbar-nav .contact-phone,
+.mobile-navbar-nav .user-icon {
+    color: white;
+    /* 文字白色 */
+    text-decoration: none;
+    /* 無底線 */
+    font-size: 18px;
+    /* 字體大小 */
+    display: block;
+    /* 讓元素佔滿寬度 */
+    padding: 10px 0;
+    /* 上下內邊距 */
+}
+
+.mobile-navbar-nav .btn-primary {
+    display: inline-block;
+    /* 行內區塊顯示 */
+    margin-top: 10px;
+    /* 頂部間距 */
+}
+
+
+/* 英雄區塊樣式 */
+.hero-section {
+    position: relative;
+    /* 相對定位，用於疊層和內容定位 */
+    width: 100%;
+    /* 佔滿寬度 */
+    height: 600px;
+    /* 高度 */
+    background-image: url('https://via.placeholder.com/1920x600/555?text=Family+on+Porch');
+    /* 背景圖片 */
+    background-size: cover;
+    /* 圖片覆蓋整個區域 */
+    background-position: center;
+    /* 圖片居中 */
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    text-align: center;
+    /* 文字居中 */
+    color: white;
+    /* 文字白色 */
+    overflow: hidden;
+    /* 隱藏超出部分 */
+}
+
+.hero-overlay {
+    position: absolute;
+    /* 絕對定位 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* 半透明黑色疊層 */
+    z-index: 1;
+    /* 位於背景圖片之上 */
+}
+
+.hero-content {
+    position: relative;
+    /* 相對定位，確保在疊層之上 */
+    z-index: 2;
+    /* 位於疊層之上 */
+    padding: 20px;
+    /* 內邊距 */
+}
+
+.hero-subtitle {
+    font-size: 18px;
+    /* 字體大小 */
+    letter-spacing: 2px;
+    /* 字元間距 */
+    margin-bottom: 15px;
+    /* 底部間距 */
+    position: relative;
+    /* 相對定位，用於邊線 */
+    display: inline-block;
+    /* 行內區塊顯示 */
+    padding: 0 10px;
+    /* 左右內邊距 */
+}
+
+.hero-subtitle::before,
+.hero-subtitle::after {
+    content: '';
+    /* 偽元素內容為空 */
+    position: absolute;
+    /* 絕對定位 */
+    height: 1px;
+    /* 高度 */
+    width: 40px;
+    /* 寬度 */
+    background-color: white;
+    /* 白色邊線 */
+    top: 50%;
+    /* 垂直居中 */
+}
+
+.hero-subtitle::before {
+    left: -50px;
+    /* 位於文字左側 */
+}
+
+.hero-subtitle::after {
+    right: -50px;
+    /* 位於文字右側 */
+}
+
+.hero-title {
+    font-size: 60px;
+    /* 主標題字體大小 */
+    margin-bottom: 40px;
+    /* 底部間距 */
+    line-height: 1.2;
+    /* 行高 */
+}
+
+/* 搜尋功能區塊 */
+.search-box {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* 半透明白色背景 */
+    border-radius: 10px;
+    /* 圓角 */
+    padding: 10px;
+    /* 內邊距 */
+    display: inline-block;
+    /* 行內區塊顯示 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* 陰影 */
+}
+
+.search-tabs {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    margin-bottom: 10px;
+    /* 底部間距 */
+    justify-content: center;
+    /* 水平居中 */
+}
+
+.search-tab {
+    background-color: #e0e0e0;
+    /* 預設背景色 */
+    border: none;
+    /* 無邊框 */
+    padding: 10px 20px;
+    /* 內邊距 */
+    border-radius: 8px;
+    /* 圓角 */
+    cursor: pointer;
+    /* 滑鼠指標為手型 */
+    font-size: 16px;
+    /* 字體大小 */
+    color: #555;
+    /* 文字顏色 */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* 過渡效果 */
+}
+
+.search-tab:first-child {
+    border-top-right-radius: 0;
+    /* 左邊第一個按鈕右上角無圓角 */
+    border-bottom-right-radius: 0;
+    /* 左邊第一個按鈕右下角無圓角 */
+}
+
+.search-tab:last-child {
+    border-top-left-radius: 0;
+    /* 右邊第一個按鈕左上角無圓角 */
+    border-bottom-left-radius: 0;
+    /* 右邊第一個按鈕左下角無圓角 */
+}
+
+
+.search-tab.active {
+    background-color: #ff9800;
+    /* 選中時橘色背景 */
+    color: white;
+    /* 選中時文字白色 */
+}
+
+.search-input-group {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    align-items: center;
+    /* 垂直居中對齊 */
+}
+
+.search-input {
+    flex-grow: 1;
+    /* 佔據剩餘空間 */
+    padding: 10px 15px;
+    /* 內邊距 */
+    border: 1px solid #ccc;
+    /* 邊框 */
+    border-radius: 8px 0 0 8px;
+    /* 左側圓角 */
+    font-size: 16px;
+    /* 字體大小 */
+    outline: none;
+    /* 移除外框 */
+}
+
+.search-button {
+    background-color: #ff9800;
+    /* 橘色背景 */
+    color: white;
+    /* 文字白色 */
+    border: none;
+    /* 無邊框 */
+    padding: 10px 20px;
+    /* 內邊距 */
+    border-radius: 0 8px 8px 0;
+    /* 右側圓角 */
+    cursor: pointer;
+    /* 滑鼠指標為手型 */
+    font-size: 18px;
+    /* 圖示大小 */
+    transition: background-color 0.3s ease;
+    /* 背景色過渡效果 */
+}
+
+.search-button:hover {
+    background-color: #e68900;
+    /* 懸停時背景變深 */
+}
+
+/* 為您推薦房源區塊 */
+.homes-for-you {
+    background-color: #f8f9fa;
+    /* 淺灰色背景 */
+    padding: 60px 0;
+    /* 上下內邊距 */
+    text-align: center;
+    /* 文字居中 */
+}
+
+.section-title {
+    font-size: 36px;
+    /* 標題字體大小 */
+    margin-bottom: 10px;
+    /* 底部間距 */
+}
+
+.section-subtitle {
+    font-size: 18px;
+    /* 副標題字體大小 */
+    color: #666;
+    /* 文字顏色 */
+    margin-bottom: 40px;
+    /* 底部間距 */
+}
+
+/* 輪播容器 */
+.carousel-container {
+    position: relative;
+    /* 相對定位 */
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    align-items: center;
+    /* 垂直居中對齊 */
+    overflow: hidden;
+    /* 隱藏超出部分 */
+    padding: 0 50px;
+    /* 為箭頭預留空間 */
+}
+
+.property-cards-wrapper {
+    overflow: hidden;
+    /* 隱藏超出部分 */
+    flex-grow: 1;
+    /* 佔據剩餘空間 */
+}
+
+.property-card-list {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    transition: transform 0.5s ease-in-out;
+    /* 過渡效果 */
+}
+
+/* 輪播導覽箭頭 */
+.carousel-nav {
+    background-color: rgba(255, 255, 255, 0.8);
+    /* 半透明白色背景 */
+    border: 1px solid #ccc;
+    /* 邊框 */
+    border-radius: 50%;
+    /* 圓形 */
+    width: 40px;
+    /* 寬度 */
+    height: 40px;
+    /* 高度 */
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    justify-content: center;
+    /* 水平居中 */
+    align-items: center;
+    /* 垂直居中 */
+    cursor: pointer;
+    /* 滑鼠指標為手型 */
+    font-size: 20px;
+    /* 圖示大小 */
+    color: #555;
+    /* 圖示顏色 */
+    position: absolute;
+    /* 絕對定位 */
+    top: 50%;
+    /* 垂直居中 */
+    transform: translateY(-50%);
+    /* 向上移動自身高度的一半 */
+    z-index: 10;
+    /* 確保在卡片之上 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* 陰影 */
+}
+
+.carousel-nav.prev-btn {
+    left: 0;
+    /* 左側對齊 */
+}
+
+.carousel-nav.next-btn {
+    right: 0;
+    /* 右側對齊 */
+}
+
+.carousel-nav:hover {
+    background-color: white;
+    /* 懸停時背景變白 */
+}
+
+/* 房源卡片樣式 */
+.property-card {
+    background-color: white;
+    /* 白色背景 */
+    border-radius: 10px;
+    /* 圓角 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 陰影 */
+    margin: 0 15px;
+    /* 左右間距 */
+    overflow: hidden;
+    /* 隱藏超出部分 */
+    flex-shrink: 0;
+    /* 不縮小 */
+    width: calc(33.333% - 30px);
+    /* 大螢幕下顯示三張卡片，計算寬度 */
+    max-width: 380px;
+    /* 最大寬度 */
+    text-align: left;
+    /* 文字左對齊 */
+    transition: transform 0.3s ease;
+    /* 過渡效果 */
+}
+
+.property-card:hover {
+    transform: translateY(-5px);
+    /* 懸停時向上移動 */
+}
+
+.property-image-container {
+    position: relative;
+    /* 相對定位，用於標籤 */
+    height: 250px;
+    /* 圖片容器高度 */
+    overflow: hidden;
+    /* 隱藏超出部分 */
+}
+
+.property-image {
+    width: 100%;
+    /* 寬度佔滿 */
+    height: 100%;
+    /* 高度佔滿 */
+    object-fit: cover;
+    /* 圖片覆蓋整個容器 */
+    display: block;
+    /* 移除圖片底部的空白 */
+}
+
+.property-tag {
+    position: absolute;
+    /* 絕對定位 */
+    top: 15px;
+    /* 距離頂部 */
+    left: 15px;
+    /* 距離左側 */
+    background-color: #333;
+    /* 深色背景 */
+    color: white;
+    /* 文字白色 */
+    padding: 5px 10px;
+    /* 內邊距 */
+    border-radius: 5px;
+    /* 圓角 */
+    font-size: 14px;
+    /* 字體大小 */
+    font-weight: bold;
+    /* 字體加粗 */
+}
+
+.property-tag.featured-tag {
+    background-color: #ffc107;
+    /* 黃色背景 */
+    color: #333;
+    /* 文字深色 */
+    left: auto;
+    /* 取消左側定位 */
+    right: 15px;
+    /* 距離右側 */
+}
+
+.property-info {
+    padding: 20px;
+    /* 內邊距 */
+}
+
+.property-name {
+    font-size: 22px;
+    /* 房源名稱字體大小 */
+    margin-top: 0;
+    /* 移除頂部邊距 */
+    margin-bottom: 10px;
+    /* 底部間距 */
+}
+
+.property-price {
+    font-size: 24px;
+    /* 價格字體大小 */
+    color: #ff9800;
+    /* 橘色文字 */
+    font-weight: bold;
+    /* 字體加粗 */
+    margin-bottom: 10px;
+    /* 底部間距 */
+    text-align: right;
+    /* 右對齊 */
+}
+
+.property-price .month-tag {
+    font-size: 16px;
+    /* "/month" 字體大小 */
+    font-weight: normal;
+    /* 字體不加粗 */
+    color: #666;
+    /* 灰色文字 */
+}
+
+.property-address {
+    font-size: 16px;
+    /* 地址字體大小 */
+    color: #666;
+    /* 灰色文字 */
+    margin-bottom: 15px;
+    /* 底部間距 */
+}
+
+.property-address .fas {
+    margin-right: 8px;
+    /* 圖示右側間距 */
+}
+
+.property-features {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    justify-content: space-between;
+    /* 元素分散對齊 */
+    font-size: 14px;
+    /* 字體大小 */
+    color: #555;
+    /* 文字顏色 */
+}
+
+.property-features span {
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    align-items: center;
+    /* 垂直居中對齊 */
+}
+
+.property-features .fas {
+    margin-right: 5px;
+    /* 圖示右側間距 */
+}
+
+/* 分頁指示器 */
+.carousel-pagination {
+    margin-top: 30px;
+    /* 頂部間距 */
+    display: flex;
+    /* 使用 Flexbox 佈局 */
+    justify-content: center;
+    /* 水平居中 */
+    gap: 10px;
+    /* 點與點之間的間距 */
+}
+
+.dot {
+    width: 10px;
+    /* 寬度 */
+    height: 10px;
+    /* 高度 */
+    background-color: #bbb;
+    /* 預設背景色 */
+    border-radius: 50%;
+    /* 圓形 */
+    cursor: pointer;
+    /* 滑鼠指標為手型 */
+    transition: background-color 0.3s ease;
+    /* 背景色過渡效果 */
+}
+
+.dot.active {
+    background-color: #ff9800;
+    /* 選中時橘色 */
+}
+
+/* 響應式設計 (RWD) */
+
+/* 超小型設備 (手機, <576px) */
+@media (max-width: 575.98px) {
+
+    .navbar .navbar-nav,
+    .navbar .navbar-actions {
+        display: none;
+        /* 隱藏導覽連結和動作按鈕 */
+    }
+
+    .navbar .hamburger-menu {
+        display: block;
+        /* 顯示漢堡選單 */
+    }
+
+    .navbar .container {
+        justify-content: space-between;
+        /* Logo 與漢堡選單分散對齊 */
+    }
+
+    .hero-title {
+        font-size: 40px;
+        /* 主標題字體縮小 */
+    }
+
+    .hero-subtitle::before,
+    .hero-subtitle::after {
+        width: 20px;
+        /* 小標題邊線縮短 */
+        left: -30px;
+        right: -30px;
+    }
+
+    .search-box {
+        width: 90%;
+        /* 搜尋框寬度佔比 */
+        padding: 10px;
+    }
+
+    .search-tabs {
+        justify-content: center;
+        /* 搜尋頁籤居中 */
+    }
+
+    .search-input-group {
+        flex-direction: column;
+        /* 搜尋框和按鈕垂直堆疊 */
+    }
+
+    .search-input,
+    .search-button {
+        width: 100%;
+        /* 佔滿寬度 */
+        border-radius: 8px;
+        /* 圓角 */
+        margin-bottom: 10px;
+        /* 底部間距 */
+    }
+
+    .search-input {
+        margin-bottom: 15px;
+        /* 輸入框底部間距 */
+    }
+
+    .search-button {
+        margin-bottom: 0;
+        /* 移除按鈕底部間距 */
+    }
+
+    .carousel-container {
+        padding: 0 15px;
+        /* 左右內邊距 */
+    }
+
+    .carousel-nav {
+        display: none;
+        /* 小螢幕下隱藏輪播箭頭 */
+    }
+
+    .property-card {
+        width: 100%;
+        /* 佔滿寬度 */
+        margin: 0;
+        /* 移除左右間距 */
+        margin-bottom: 30px;
+        /* 底部間距 */
+    }
+}
+
+/* 小型設備 (平板直向, >=576px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+    .navbar .navbar-nav,
+    .navbar .navbar-actions {
+        display: none;
+        /* 隱藏導覽連結和動作按鈕 */
+    }
+
+    .navbar .hamburger-menu {
+        display: block;
+        /* 顯示漢堡選單 */
+    }
+
+    .navbar .container {
+        justify-content: space-between;
+        /* Logo 與漢堡選單分散對齊 */
+    }
+
+    .hero-title {
+        font-size: 50px;
+        /* 主標題字體縮小 */
+    }
+
+    .search-box {
+        width: 80%;
+    }
+
+    .carousel-container {
+        padding: 0 30px;
+        /* 左右內邊距 */
+    }
+
+    .property-card {
+        width: calc(50% - 30px);
+        /* 顯示兩張卡片，計算寬度 */
+    }
+}
+
+/* 中型設備 (平板橫向, >=768px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .navbar .navbar-nav {
+        display: flex;
+        /* 顯示導覽連結 */
+        margin-left: auto;
+        /* 推到右邊 */
+        margin-right: 20px;
+        /* 右側間距 */
+    }
+
+    .navbar .navbar-actions {
+        display: flex;
+        /* 顯示動作按鈕 */
+    }
+
+    .navbar .hamburger-menu {
+        display: none;
+        /* 隱藏漢堡選單 */
+    }
+
+    .hero-title {
+        font-size: 55px;
+        /* 主標題字體 */
+    }
+
+    .search-box {
+        width: 70%;
+    }
+
+    .property-card {
+        width: calc(50% - 30px);
+        /* 顯示兩張卡片 */
+    }
+}
+
+/* 大型設備 (筆記型電腦, >=992px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .navbar-nav {
+        margin-left: auto;
+        /* 推到右邊 */
+        margin-right: 30px;
+        /* 右側間距 */
+    }
+
+    .property-card {
+        width: calc(33.333% - 30px);
+        /* 顯示三張卡片 */
+    }
+}
+
+/* 超大型設備 (桌上型電腦, >=1200px) */
+@media (min-width: 1200px) {
+    .navbar-nav {
+        margin-left: auto;
+        /* 推到右邊 */
+        margin-right: 30px;
+        /* 右側間距 */
+    }
+
+    .property-card {
+        width: calc(33.333% - 30px);
+        /* 顯示三張卡片 */
+    }
+}
