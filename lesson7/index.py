@@ -39,6 +39,10 @@ def news():
     except InterfaceError as e:
         print(f"🚨 連線中斷：連線被意外關閉 | 詳細訊息：{e}")
         return render_template("error.html.jinja2",error_message=f"🚨 連線中斷：連線被意外關閉 | 詳細訊息：{e}"), 500
+    except ProgrammingError as e:
+        print(f"SQL語法錯誤或資料表/欄位不存在: {e}")
+        return render_template("error.html.jinja2",
+        error_message=f"🚨 SQL語法錯誤或資料表/欄位不存在: {e}"), 500
     except Error as e:
         print(f"🚨 資料庫錯誤：{e}")
         return render_template("error.html.jinja2",error_message=f"🚨 資料庫錯誤：{e}"), 500
