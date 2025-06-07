@@ -26,12 +26,20 @@ def classes():
 
 @app.route("/news")
 def news():
+    news_list = []  # 先建立一個空的列表，避免出錯
     try:
         with psycopg2.connect(conn_string) as conn:
             with conn.cursor() as cur:
-                cur.execute("SELECT * FROM 最新訊息 ORDER BY 編號 ASC;")
+                cur.execute("SELECT 主題 AS title, 上版日期 AS date, 內容 AS content FROM 最新訊息 ORDER BY 編號 ASC;")
                 rows = cur.fetchall()
-                colnames = [desc[0] for desc in cur.description]  # 取得欄位名稱
+
+                # --- 👇 加入這行偵錯指令 👇 ---
+                print(f"從資料庫查詢到的資料: {rows}") 
+                # --- 👆 加入這行偵錯指令 👆 ---
+
+                colnames = [desc[0] for desc in cur.description]
+                for row in rows:
+                    news_list.append(dict(zip(colnames, row)))
 
     except OperationalError as e:
         print(f"🚨 連線失敗：伺服器未啟動、網路問題或參數錯誤 | 詳細訊息：{e}")
@@ -46,7 +54,7 @@ def news():
         print(f"🚨 其他錯誤：{e}")
         return render_template("error.html.jinja2",error_message=f"🚨 其他錯誤：{e}"), 500
 
-    return render_template("news.html.jinja2", rows=rows, colnames=colnames)
+    return render_template("news.html.jinja2", rows=rows, 最新訊息=news_list)
 
 
 @app.route("/traffic")

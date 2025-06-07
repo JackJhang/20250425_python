@@ -1,0 +1,51 @@
+{% extends "layout/base.html.jinja2" %}
+{% block title %}
+職能發展學院-最新消息
+{% endblock %}
+
+{% block link %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/news.css')}}">
+{% endblock %}
+
+{% block main %}
+<h1>{{ self.title() }}</h1>
+{{ rows }}
+
+    <div class="container">
+        <div class="accordion">
+            {% if 最新訊息 %}
+                {% for item in 最新訊息 %}
+                <div class="accordion-item">
+                    <button class="accordion-header {% if loop.first %}active{% endif %}" 
+                            data-target="content-{{ loop.index }}">
+                        <div class="accordion-title-section">
+                            <div class="accordion-title">{{ item.title|e }}</div>
+                            <div class="accordion-date">日期：{{ item.date }}</div>
+                        </div>
+                        <div class="accordion-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7 10l5 5 5-5z"/>
+                            </svg>
+                        </div>
+                    </button>
+                    <div class="accordion-content {% if loop.first %}expanded{% else %}collapsed{% endif %}" 
+                         id="content-{{ loop.index }}">
+                        <div class="accordion-body">
+                            {{ item.content|e|replace('\n', '<br>')|safe }}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-data">
+                    <p>目前沒有資料可顯示</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+<script src="{{url_for('static',filename='js/news.js')}}"></script>
+
+
+{% endblock %}

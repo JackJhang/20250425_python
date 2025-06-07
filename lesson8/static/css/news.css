@@ -1,219 +1,163 @@
-.accordion-container {
-    width: 100%;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f5f5f5;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+.container {
     max-width: 800px;
-    /* 根據實際需求調整最大寬度 */
-    height: 400px;
-    /* 固定容器高度，根據實際需求調整 */
-    overflow-y: auto;
-    /* 超出高度時顯示垂直捲軸 */
-    margin: 20px auto;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.accordion {
+    border: none;
 }
 
 .accordion-item {
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 .accordion-item:last-child {
     border-bottom: none;
 }
 
-/* 新增：交互背景顏色 (斑馬紋效果) */
-.accordion-item:nth-child(odd) {
-    background-color: #66666665;
-    /* 淺灰色 */
-}
-
-.accordion-item:nth-child(even) {
-    background-color: #ffffff;
-    /* 白色 */
-}
-
-
 .accordion-header {
     display: flex;
-    /* 確保標題和日期在同一行 */
-    align-items: center;
-    padding: 15px 20px;
-    /* background-color: #fff;  此行被斑馬紋效果覆蓋，如果需要預設背景請保留 */
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
     cursor: pointer;
-    position: relative;
-    box-sizing: border-box;
-    /* 確保 padding 不會影響寬度計算 */
+    background: #fafafa;
+    border: none;
+    width: 100%;
+    text-align: left;
+    transition: background-color 0.3s ease;
 }
 
 .accordion-header:hover {
-    background-color: #e0e0e0;
-    /* hover 時的背景色，可以更深一點來突出 */
+    background-color: #f0f0f0;
+}
+
+.accordion-header.active {
+    background-color: #e8f4f8;
+}
+
+.accordion-title-section {
+    flex: 1;
+    margin-right: 20px;
 }
 
 .accordion-title {
-    text-align: left;
-    flex-grow: 1;
-    /* 標題佔據大部分空間 */
-    margin: 0;
     font-size: 16px;
-    line-height: 1.5;
-    /* 確保多行標題的行高 */
-    word-wrap: break-word;
-    /* 允許長單詞換行 */
+    font-weight: 600;
     color: #333;
-    min-width: 0;
-    /* 允許標題在空間不足時收縮 */
+    margin-bottom: 8px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .accordion-date {
     font-size: 14px;
     color: #666;
-    margin-left: 20px;
-    /* 與標題的間距 */
-    white-space: nowrap;
-    /* 日期不換行 */
-    flex-shrink: 0;
-    /* 防止日期被壓縮 */
+    margin-top: 4px;
 }
 
-.accordion-toggle-icon {
-    width: 0;
-    height: 0;
-    border-left: 6px solid transparent;
-    border-right: 6px solid transparent;
-    border-top: 6px solid #333;
+.accordion-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.3s ease;
-    margin-left: 15px;
-    /* 與日期的間距 */
-    flex-shrink: 0;
-    /* 防止箭頭被壓縮 */
 }
 
-.accordion-item.active .accordion-toggle-icon {
+.accordion-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: #666;
+}
+
+.accordion-header.active .accordion-icon {
     transform: rotate(180deg);
 }
 
 .accordion-content {
-    max-height: 0;
-    /* 預設收合 */
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
-    padding: 0 20px;
-    /* 預設為0，展開時再設定 */
-    box-sizing: border-box;
-    /* 確保 padding 不會增加實際高度 */
-    background-color: #fae7b4e0;
+    transition: max-height 0.3s ease;
+    background: white;
+}
+
+.accordion-content.collapsed {
+    max-height: 0;
+}
+
+.accordion-content.expanded {
+    max-height: 200px;
+    /* 固定高度 */
+}
+
+.accordion-body {
+    padding: 20px;
     color: #555;
     font-size: 14px;
     line-height: 1.6;
-    text-align: left;
-    /* 新增：確保內容文字靠左對齊 */
-}
-
-.accordion-content p {
-    margin: 0;
-    text-align: left;
-    /* 新增：確保內容段落也靠左對齊 */
-}
-
-.accordion-item.active .accordion-content {
-    max-height: 150px;
-    /* 固定內容高度，根據實際需求調整 */
-    padding: 15px 20px;
-    border-top: 1px solid #eee;
+    height: 160px;
+    /* 固定內容區域高度 */
     overflow-y: auto;
-    /* 超出固定高度時顯示捲軸 */
 }
 
 /* 響應式設計 */
-@media (max-width: 1200px) {
-    /* Large devices (desktops, 992px and up) */
-}
-
-@media (max-width: 992px) {
-
-    /* Medium devices (tablets, 768px and up) */
-    .accordion-header {
-        padding: 12px 15px;
-    }
-
-    .accordion-content {
-        padding: 0 15px;
-    }
-
-    .accordion-item.active .accordion-content {
-        padding: 12px 15px;
-    }
-
-    .accordion-date {
-        margin-left: 15px;
-    }
-
-    .accordion-toggle-icon {
-        margin-left: 10px;
-    }
-}
-
 @media (max-width: 768px) {
-
-    /* Small devices (landscape phones, 576px and up) */
-    .accordion-header {
-        flex-direction: row;
-        /* 確保是行佈局 */
-        align-items: center;
-        /* 保持垂直居中 */
-    }
-
-    .accordion-title {
-        margin-bottom: 0;
-    }
-
-    .accordion-date {
-        margin-left: 10px;
-        text-align: right;
-    }
-
-    .accordion-toggle-icon {
-        position: static;
-        transform: none;
-        margin-left: 10px;
-    }
-
-    .accordion-item.active .accordion-toggle-icon {
-        transform: rotate(180deg);
-    }
-}
-
-@media (max-width: 576px) {
-
-    /* Extra small devices (portrait phones, less than 576px) */
-    .accordion-container {
-        margin: 10px auto;
-        border-radius: 0;
+    .container {
+        margin: 0 10px;
     }
 
     .accordion-header {
-        padding: 10px 10px;
+        padding: 15px;
     }
 
-    .accordion-content {
-        padding: 0 10px;
-    }
-
-    .accordion-item.active .accordion-content {
-        padding: 10px 10px;
+    .accordion-title-section {
+        margin-right: 15px;
     }
 
     .accordion-title {
         font-size: 15px;
     }
 
-    .accordion-date {
-        font-size: 13px;
-        margin-left: 8px;
+    .accordion-body {
+        padding: 15px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .accordion-header {
+        padding: 12px;
     }
 
-    .accordion-toggle-icon {
-        margin-left: 8px;
+    .accordion-title-section {
+        margin-right: 12px;
+    }
+
+    .accordion-title {
+        font-size: 14px;
+    }
+
+    .accordion-body {
+        padding: 12px;
+        height: 120px;
     }
 }
