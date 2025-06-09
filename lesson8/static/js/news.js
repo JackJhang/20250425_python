@@ -1,38 +1,56 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // 在 Jinja2 渲染的頁面中，JS 不再需要「模擬」資料獲取，
-    // 因為資料已經在伺服器端渲染到 HTML 中了。
-    // 這裡的 JS 僅負責手風琴的交互邏輯。
+class Accordion {
+    constructor(element) {
+        this.accordion = element;
+        this.headers = this.accordion.querySelectorAll('.accordion-header');
+        this.contents = this.accordion.querySelectorAll('.accordion-content');
 
-    const accordionItems = document.querySelectorAll('.accordion-item');
+        this.init();
+    }
 
-    accordionItems.forEach(item => {
-        const header = item.querySelector('.accordion-header');
-        const content = item.querySelector('.accordion-content');
-
-        header.addEventListener('click', () => {
-            // 收合所有其他項目（如果需要單一展開）
-            accordionItems.forEach(otherItem => {
-                if (otherItem !== item && otherItem.classList.contains('active')) {
-                    otherItem.classList.remove('active');
-                    otherItem.querySelector('.accordion-content').style.maxHeight = '0';
-                }
+    init() {
+        this.headers.forEach(header => {
+            header.addEventListener('click', (e) => {
+                this.toggle(e.currentTarget);
             });
+        });
+    }
 
-            // 切換當前項目的展開/收合狀態
-            item.classList.toggle('active');
-            if (item.classList.contains('active')) {
-                content.style.maxHeight = '150px'; // 固定內容高度
-            } else {
-                content.style.maxHeight = '0';
+    toggle(clickedHeader) {
+        const targetId = clickedHeader.getAttribute('data-target');
+        const targetContent = document.getElementById(targetId);
+        const isActive = clickedHeader.classList.contains('active');
+
+        // 關閉所有其他項目
+        this.headers.forEach(header => {
+            if (header !== clickedHeader) {
+                header.classList.remove('active');
             }
         });
-    });
 
-    // 預設展開第一個項目 (因為 Jinja2 已經添加了 active class)
-    // 確保其內容高度被正確設定
-    const firstActiveItem = document.querySelector('.accordion-item.active');
-    if (firstActiveItem) {
-        const firstContent = firstActiveItem.querySelector('.accordion-content');
-        firstContent.style.maxHeight = '150px';
+        this.contents.forEach(content => {
+            if (content !== targetContent) {
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+            }
+        });
+
+        // 切換點擊的項目
+        if (isActive) {
+            clickedHeader.classList.remove('active');
+            targetContent.classList.remove('expanded');
+            targetContent.classList.add('collapsed');
+        } else {
+            clickedHeader.classList.add('active');
+            targetContent.classList.remove('collapsed');
+            targetContent.classList.add('expanded');
+        }
+    }
+}
+
+// 初始化手風琴
+document.addEventListener('DOMContentLoaded', function () {
+    const accordionElement = document.querySelector('.accordion');
+    if (accordionElement) {
+        new Accordion(accordionElement);
     }
 });

@@ -19,12 +19,12 @@
     {% for item in accordion_data %}
     <div class="accordion-item {% if loop.first %}active{% endif %}">
         <div class="accordion-header">
-            <h3 class="accordion-title">{{ item.title }}</h3>
-            <div class="accordion-date">{{ item.date }}</div>
+            <h3 class="accordion-title">{{ rows.title }}</h3>
+            <div class="accordion-date">{{ rows.date }}</div>
             <span class="accordion-toggle-icon"></span>
         </div>
         <div class="accordion-content">
-            <p>{{ item.content }}</p>
+            <p>{{ rows.content }}</p>
         </div>
     </div>
     {% endfor %}

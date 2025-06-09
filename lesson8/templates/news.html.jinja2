@@ -12,27 +12,37 @@
 <h1>{{ self.title() }}</h1>
 {{ rows }}
 
-<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">
-    <thead style="background-color: #f2f2f2;">
-        <tr>
-            {% for colname in colnames %}
-            <th>{{ colname }}</th>
+<div class="container">
+    <div class="accordion">
+        {% if 最新訊息 %}
+            {% for item in 最新訊息 %}
+            <div class="accordion-item">
+                <button class="accordion-header {% if loop.first %}active{% endif %}" 
+                        data-target="content-{{ loop.index }}">
+                    <div class="accordion-title-section">
+                        <div class="accordion-title">{{ item.title|e }}</div>
+                        <div class="accordion-date">日期：{{ item.date }}</div>
+                    </div>
+                    <div class="accordion-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M7 10l5 5 5-5z"/>
+                        </svg>
+                    </div>
+                </button>
+                <div class="accordion-content {% if loop.first %}expanded{% else %}collapsed{% endif %}" 
+                     id="content-{{ loop.index }}">
+                    <div class="accordion-body">
+                        {{ item.content|e|replace('\n', '<br>')|safe }}
+                    </div>
+                </div>
+            </div>
             {% endfor %}
-        </tr>
-    </thead>
-    <tbody>
-        {% for row in rows %}
-        <tr>
-            {% for col in row %}
-            <td>{{ col }}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<br>
-<div class="accordion-container">
+        {% else %}
+            <div class="no-data">
+                <p>目前沒有資料可顯示</p>
+            </div>
+        {% endif %}
+    </div>
 </div>
 
 <script src="{{url_for('static',filename='js/news.js')}}"></script>

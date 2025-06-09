@@ -52,6 +52,13 @@ def news():
 
     return render_template("news.html.jinja2", rows=rows, colnames=colnames)
 
+@app.route("/news2")
+def news2():
+    return render_template("news_ver2.html.jinja2")
+
+@app.route("/news3")
+def news3():
+    return render_template("news_ver3.html.jinja2")
 
 @app.route("/traffic")
 def traffic():
