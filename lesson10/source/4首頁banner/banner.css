@@ -1,0 +1,157 @@
+/* --- Event Banner Styles --- */
+.event-banner-container {
+    font-family: Arial, sans-serif;
+    /* 建議在主CSS中設定更合適的字體 */
+    text-align: center;
+    /* 整體內容居中 */
+    padding: 20px;
+    max-width: 900px;
+    /* 最大寬度，可根據主網頁調整 */
+    margin-left: auto;
+    /* 使容器本身在父元素中居中 */
+    margin-right: auto;
+    /* 使容器本身在父元素中居中 */
+}
+
+.event-title {
+    font-size: 2.2em;
+    /* 標題字體大小 */
+    color: #333;
+    /* 標題顏色 */
+    margin-bottom: 0.2em;
+    font-weight: bold;
+    /* 根據圖片，標題為粗體 */
+}
+
+.event-subtitle {
+    font-size: 1.1em;
+    /* 副標題字體大小 */
+    color: #555;
+    /* 副標題顏色 */
+    margin-bottom: 1.5em;
+}
+
+.event-image-wrapper {
+    position: relative;
+    /* 作為圖片標籤定位的基準 */
+    margin-bottom: 0.8em;
+    display: inline-block;
+    /* 使 wrapper 內容居中且寬度自適應圖片 */
+}
+
+.event-image {
+    max-width: 100%;
+    /* 圖片最大寬度為其容器寬度 */
+    height: auto;
+    /* 高度自動，保持圖片比例 */
+    display: block;
+    /* 消除圖片下方的微小間距 */
+    border-radius: 4px;
+    /* 輕微圓角，可選 */
+}
+
+.event-image-tag {
+    position: absolute;
+    /* 相對於 event-image-wrapper 定位 */
+    top: 15px;
+    /* 距離頂部距離 */
+    left: 15px;
+    /* 距離左側距離 */
+    background-color: rgba(0, 60, 46, 0.85);
+    /* 標籤背景顏色，根據圖片調整透明度 */
+    color: #fff;
+    /* 標籤文字顏色 */
+    padding: 6px 12px;
+    /* 標籤內邊距 */
+    border-radius: 4px;
+    /* 標籤圓角 */
+    font-size: 0.9em;
+    /* 標籤字體大小 */
+}
+
+.event-caption {
+    font-size: 1em;
+    /* 圖片說明文字字體大小 */
+    color: #444;
+    /* 圖片說明文字顏色 */
+}
+
+/* --- Responsive Design Breakpoints --- */
+
+/* 小型桌面 (Medium Desktop): 992px 至 1200px (此處可視為基準，向上或向下調整) */
+/* 此範圍通常不需要大改動，除非特定設計需求 */
+
+/* 平板裝置與小型桌面 (Tablet & Small Desktop): 768px 至 992px */
+@media (max-width: 991.98px) {
+    .event-title {
+        font-size: 2em;
+    }
+
+    .event-subtitle {
+        font-size: 1em;
+    }
+
+    .event-image-tag {
+        top: 10px;
+        left: 10px;
+        font-size: 0.85em;
+        padding: 5px 10px;
+    }
+
+    .event-caption {
+        font-size: 0.95em;
+    }
+}
+
+/* 行動裝置與平板裝置 (Mobile & Tablet): 576px 至 768px */
+@media (max-width: 767.98px) {
+    .event-banner-container {
+        padding: 15px;
+    }
+
+    .event-title {
+        font-size: 1.8em;
+    }
+
+    .event-subtitle {
+        font-size: 0.95em;
+    }
+
+    .event-image-tag {
+        font-size: 0.8em;
+        padding: 4px 8px;
+    }
+
+    .event-caption {
+        font-size: 0.9em;
+    }
+}
+
+/* 行動裝置 (Mobile): 小於 576px */
+@media (max-width: 575.98px) {
+    .event-title {
+        font-size: 1.6em;
+    }
+
+    .event-subtitle {
+        font-size: 0.9em;
+        margin-bottom: 1em;
+    }
+
+    .event-image-tag {
+        top: 8px;
+        left: 8px;
+        font-size: 0.75em;
+        padding: 3px 6px;
+    }
+
+    .event-caption {
+        font-size: 0.85em;
+    }
+}
+
+/* 大型桌面 (Large Desktop): 大於 1200px (通常繼承 992px 以上的樣式，除非有特別放大需求) */
+/* @media (min-width: 1200px) { */
+/* 例如可以稍微放大字體或間距 */
+/* .event-title { font-size: 2.4em; } */
+/* } */

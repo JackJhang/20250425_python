@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JustHome - 尋找您夢想的家</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="https://via.placeholder.com/40x40" alt="JustHome Logo" class="logo-img">
+                <span>JustHome</span>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">Listings <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Properties</a></li>
+                        <li><a href="#">New Listings</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Members</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                <li class="nav-item has-dropdown">
+                    <a href="#" class="nav-link">Pages <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="navbar-actions">
+                <span class="contact-phone"><i class="fas fa-phone-alt"></i> +68 685 88666</span>
+                <a href="#" class="user-icon"><i class="fas fa-user"></i></a>
+                <button class="btn btn-primary">Add Property</button>
+            </div>
+            <div class="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+        <div class="mobile-nav-overlay">
+            <ul class="mobile-navbar-nav">
+                <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Listings</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Members</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Pages</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                <li class="nav-item"><span class="contact-phone"><i class="fas fa-phone-alt"></i> +68 685 88666</span>
+                </li>
+                <li class="nav-item"><a href="#" class="user-icon"><i class="fas fa-user"></i> User Account</a></li>
+                <li class="nav-item"><button class="btn btn-primary">Add Property</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <p class="hero-subtitle">LET US GUIDE YOUR HOME</p>
+            <h1 class="hero-title">Discover a place you'll <br> love to live</h1>
+            <div class="search-box">
+                <div class="search-tabs">
+                    <button class="search-tab active" data-tab="sale">Sale</button>
+                    <button class="search-tab" data-tab="rent">Rent</button>
+                </div>
+                <div class="search-input-group">
+                    <input type="text" class="search-input" placeholder="Enter Name, Keywords...">
+                    <button class="search-button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="homes-for-you">
+        <div class="container">
+            <h2 class="section-title">Homes For You</h2>
+            <p class="section-subtitle">Based on your view history</p>
+
+            <div class="carousel-container">
+                <button class="carousel-nav prev-btn"><i class="fas fa-chevron-left"></i></button>
+                <div class="property-cards-wrapper">
+                    <div class="property-card-list">
+                        <div class="property-card">
+                            <div class="property-image-container">
+                                <img src="https://via.placeholder.com/350x250" alt="Skyper Pool Apartment"
+                                    class="property-image">
+                                <span class="property-tag sale-tag">FOR SALE</span>
+                            </div>
+                            <div class="property-info">
+                                <h3 class="property-name">Skyper Pool Apartment</h3>
+                                <p class="property-price">$280,000</p>
+                                <p class="property-address"><i class="fas fa-map-marker-alt"></i> 1020 Bloomingdale Ave
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 4 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 450 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <div class="property-image-container">
+                                <img src="https://via.placeholder.com/350x250" alt="North Dillard Street"
+                                    class="property-image">
+                                <span class="property-tag rent-tag">FOR RENT</span>
+                            </div>
+                            <div class="property-info">
+                                <h3 class="property-name">North Dillard Street</h3>
+                                <p class="property-price">$250 <span class="month-tag">/month</span></p>
+                                <p class="property-address"><i class="fas fa-map-marker-alt"></i> 4330 Bell Shools Rd
+                                </p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 4 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 400 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <div class="property-image-container">
+                                <img src="https://via.placeholder.com/350x250" alt="Eaton Garth Penthouse"
+                                    class="property-image">
+                                <span class="property-tag sale-tag">FOR SALE</span>
+                                <span class="property-tag featured-tag">FEATURED</span>
+                            </div>
+                            <div class="property-info">
+                                <h3 class="property-name">Eaton Garth Penthouse</h3>
+                                <p class="property-price">$180,000</p>
+                                <p class="property-address"><i class="fas fa-map-marker-alt"></i> 7722 18th Ave,
+                                    Brooklyn</p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 4 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 450 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <div class="property-image-container">
+                                <img src="https://via.placeholder.com/350x250" alt="Modern Family House"
+                                    class="property-image">
+                                <span class="property-tag rent-tag">FOR RENT</span>
+                            </div>
+                            <div class="property-info">
+                                <h3 class="property-name">Modern Family House</h3>
+                                <p class="property-price">$1200 <span class="month-tag">/month</span></p>
+                                <p class="property-address"><i class="fas fa-map-marker-alt"></i> 123 Elm Street,
+                                    Springfield</p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 3 Beds</span>
+                                    <span><i class="fas fa-bath"></i> 2 Baths</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 1200 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="property-card">
+                            <div class="property-image-container">
+                                <img src="https://via.placeholder.com/350x250" alt="Cozy Downtown Loft"
+                                    class="property-image">
+                                <span class="property-tag sale-tag">FOR SALE</span>
+                            </div>
+                            <div class="property-info">
+                                <h3 class="property-name">Cozy Downtown Loft</h3>
+                                <p class="property-price">$350,000</p>
+                                <p class="property-address"><i class="fas fa-map-marker-alt"></i> 456 Oak Avenue,
+                                    Metropolis</p>
+                                <div class="property-features">
+                                    <span><i class="fas fa-bed"></i> 1 Bed</span>
+                                    <span><i class="fas fa-bath"></i> 1 Bath</span>
+                                    <span><i class="fas fa-ruler-combined"></i> 700 sqft</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-nav next-btn"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="carousel-pagination">
+                <span class="dot active" data-slide="0"></span>
+                <span class="dot" data-slide="1"></span>
+                <span class="dot" data-slide="2"></span>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
