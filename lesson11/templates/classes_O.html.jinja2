@@ -1,0 +1,123 @@
+{% extends "layout/base.html.jinja2" %}
+{% block title %}
+職能發展學院-課程介紹
+{% endblock %}
+
+{% block link %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/classes.css')}}">
+{% endblock %}
+
+{% block main %}
+
+
+<div class="course-tabs">
+    <div class="tab-container">
+        {% for kind in kinds%}
+        <a href="/classes/{{'一般課程' if loop.first else '進階課程'}}"><button
+                class="tab-item {{'active' if loop.first}}">{{kind}}</button></a>
+        {% endfor %}
+    </div>
+    <div class="tab-line"></div>
+</div>
+<section class="testimonial-grid">
+    <div class="card-grid">
+        {%for course in course_data%}
+
+        <div class="card">
+            <div class="card-content">
+                <p class="card-category">{{course[1]}}</p>
+                <h3 class="card-title">{{course[0]}}</h3>
+                <div class="card-info">
+                    <div class="card-divider"></div>
+                    <div class="card-details">
+                        <p class="card-info-item">進修人數:{{course[2]}}</p>
+                        <p class="card-info-item">進修時數:{{course[3]}}</p>
+                        <p class="card-info-item">進修費用:{{course[4]}}</p>
+                        <p class="card-info-item">上課時間:{{course[5]}}</p>
+                        <p class="card-info-item">開始日期:{{course[6]}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div>
+        <ul class="pagination">
+            {% if page > 1 %}
+            <li><a href="{{ url_for('classes', page=page-1) }}">上一頁</a></li>
+            {% else %}
+            <li class="disabled"><span>上一頁</span></li>
+            {% endif %}
+
+            {% for p in range(1, total_pages + 1) %}
+            {% if p == page %}
+            <li class="active"><span>{{ p }}</span></li>
+            {% else %}
+            <li><a href="{{ url_for('classes', page=p) }}">{{ p }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if page < total_pages %} <li><a href="{{ url_for('classes', page=page+1) }}">下一頁</a></li>
+                {% else %}
+                <li class="disabled"><span>下一頁</span></li>
+                {% endif %}
+        </ul>
+
+        <!-- 顯示該頁資料 -->
+        <ul>
+            {% for item in items %}
+            <li>{{ item }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<div class="course-selector" role="radiogroup" aria-label="選擇課程類型">
+    <div class="course-options">
+        {% for kind in kinds%}
+        <a herf="/classes/{{'一般課程' if loop.first else '進階課程'}}"><button
+                class="course-btn {{'active' if loop.first}}">{{kind}}</button></a>
+        <a href="/classes/{{'一般課程' if loop.first else '進階課程'}}"><button
+                class="tab-item {{'active' if loop.first}}">{{kind}}</button></a>
+        {% endfor %}
+    </div>
+    <div class="separator-line"></div>
+</div>
+
+
+
+
+<div class="cards-container">
+    {# 使用 Jinja 的 for 迴圈來遍歷從後端傳來的 course_data #}
+    {% for course in course_data %}
+    {# 每一次迴圈，就生成一個 <div class="card"> 區塊 #}
+        {# 這裡可以選擇性地在第一張卡片加上 "active" class，如果你的 CSS 需要這個效果 #}
+        <div class="card {% if loop.first %}active{% endif %}">
+            <div class="card-icon" role="img" aria-label="資訊圖示">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" fill="white" stroke="#1E1E1E"
+                        stroke-width="3" />
+                    <path d="M16 12V16M16 20H16.01" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <circle cx="16" cy="16" r="10" stroke="#1E1E1E" stroke-width="2" />
+                </svg>
+            </div>
+            <div class="card-content">
+                {# 使用 Jinja 的變數輸出語法 {{ }} 來顯示資料庫中的課程標題 #}
+                <h3 class="card-title">{{ course.title }}</h3>
+                {# 使用 Jinja 的變數輸出語法 {{ }} 來顯示資料庫中的課程內文 #}
+                <p class="card-body">{{ course.body }}</p>
+                {# 你可以根據資料庫中的其他欄位，繼續添加其他資訊 #}
+                <p class="card-teacher">老師: {{ course.teacher }}</p>
+                <p class="card-price">費用: {{ course.price }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+    <script src="{{url_for('static',filename='js/classes.js')}}"></script>
+
+    {% endblock %}

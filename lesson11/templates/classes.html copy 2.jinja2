@@ -1,0 +1,71 @@
+{% extends "layout/base.html.jinja2" %}
+{% block title %}
+職能發展學院-課程介紹
+{% endblock %}
+
+{% block link %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/classes.css')}}">
+{% endblock %}
+
+{% block main %}
+
+
+<div class="course-selector" role="radiogroup" aria-label="選擇課程類型">
+    <div class="course-options">
+        {% for kind in kinds%}
+        <a herf="/classes/{{'一般課程' if loop.first else '進階課程'}}"><button
+                class="course-btn {{'active' if loop.first}}">{{kind}}</button></a>
+        <a href="/classes/{{'一般課程' if loop.first else '進階課程'}}"><button
+                class="tab-item {{'active' if loop.first}}">{{kind}}</button></a>
+        {% endfor %}
+    </div>
+    <div class="separator-line"></div>
+</div>
+
+<div class="cards-container">
+    {# 使用 Jinja 的 for 迴圈來遍歷從後端傳來的 course_data #}
+    {% for course in course_data %}
+    {# 每一次迴圈，就生成一個 <div class="course-card"> 區塊 #}
+        {# <div class="course-card">
+            <h3 class="course-group">{{ course.group_name }}</h3> {# 從 course.group_name 取得群組名稱 #}
+            <h2 class="course-title">{{ course.title }}</h2>
+            <p class="course-detail">進修人數:{{ course.participants }}</p> {# 從 course.participants 取得進修人數 #}
+            <p class="course-detail">進修時數:{{ course.hours }}</p> {# 從 course.hours 取得進修時數 #}
+            <p class="course-detail">進修費用:{{ course.price }}</p>
+            <p class="course-detail">上課時間:{{ course.class_time }}</p> {# 從 course.class_time 取得上課時間 #}
+            <p class="course-detail">開始日期:{{ course.start_date }}</p> {# 從 course.start_date 取得開始日期 #}
+            <div class="decorator-line"></div>
+        </div>
+        {% endfor %}
+    </div> #}
+
+    <div class="course-card">
+
+        <p class="course-group">{{course[1]}}</p>
+        <h3 class="course-title">{{course[0]}}</h3>
+
+
+
+        <p class="course-detail">進修人數:{{course[2]}}</p>
+        <p class="course-detail">進修時數:{{course[3]}}</p>
+        <p class="course-detail">進修費用:{{course[4]}}</p>
+        <p class="course-detail">上課時間:{{course[5]}}</p>
+        <p class="course-detail">開始日期:{{course[6]}}</p>
+        <div class="decorator-line"></div>
+
+
+    </div>
+    {% endfor %}
+</div>
+<div>
+    <ul class="pagination">
+        {% if page > 1 %}
+        <li><a href="{{ url_for('classes', page=page-1) }}">上一頁</a></li>
+        {% else %}
+        <li class="disabled"><span>上一頁</span></li>
+        {% endif %}
+
+        <script src="{{url_for('static',filename='js/classes.js')}}"></script>
+
+        {% endblock %}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手風琴元件測試頁面</title>
+    <style>
+        /* CSS 樣式將直接嵌入此處或連結外部CSS檔案 */
+        /* 參照 3.2. CSS 樣式 的內容 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding-top: 20px;
+        }
+
+        .accordion-container {
+            width: 100%;
+            max-width: 800px;
+            /* 根據實際需求調整最大寬度 */
+            height: 400px;
+            /* 固定容器高度，根據實際需求調整 */
+            overflow-y: auto;
+            /* 超出高度時顯示垂直捲軸 */
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #eee;
+        }
+
+        .accordion-item:last-child {
+            border-bottom: none;
+        }
+
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .accordion-header:hover {
+            background-color: #f9f9f9;
+        }
+
+        .accordion-title {
+            flex-grow: 1;
+            /* 標題佔據大部分空間 */
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.5;
+            /* 確保多行標題的行高 */
+            word-wrap: break-word;
+            /* 允許長單詞換行 */
+            color: #333;
+        }
+
+        .accordion-date {
+            font-size: 14px;
+            color: #666;
+            margin-left: 20px;
+            /* 與標題的間距 */
+            white-space: nowrap;
+            /* 日期不換行 */
+        }
+
+        .accordion-toggle-icon {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #333;
+            transition: transform 0.3s ease;
+            margin-left: 15px;
+            /* 與日期的間距 */
+            flex-shrink: 0;
+            /* 防止箭頭被壓縮 */
+        }
+
+        .accordion-item.active .accordion-toggle-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            /* 預設收合 */
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding: 0 20px;
+            /* 預設為0，展開時再設定 */
+            box-sizing: border-box;
+            /* 確保 padding 不會增加實際高度 */
+            background-color: #fdfdfd;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .accordion-content p {
+            margin: 0;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 150px;
+            /* 固定內容高度，根據實際需求調整 */
+            padding: 15px 20px;
+            border-top: 1px solid #eee;
+            overflow-y: auto;
+            /* 超出固定高度時顯示捲軸 */
+        }
+
+        /* 響應式設計 */
+        @media (max-width: 1200px) {
+            /* Large devices (desktops, 992px and up) */
+        }
+
+        @media (max-width: 992px) {
+
+            /* Medium devices (tables, 768px and up) */
+            .accordion-header {
+                padding: 12px 15px;
+            }
+
+            .accordion-content {
+                padding: 0 15px;
+            }
+
+            .accordion-item.active .accordion-content {
+                padding: 12px 15px;
+            }
+
+            .accordion-date {
+                margin-left: 15px;
+            }
+
+            .accordion-toggle-icon {
+                margin-left: 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Small devices (landscape phones, 576px and up) */
+            .accordion-header {
+                flex-direction: column;
+                /* 標題和日期堆疊 */
+                align-items: flex-start;
+            }
+
+            .accordion-title {
+                margin-bottom: 5px;
+                width: 100%;
+                /* 佔滿可用寬度 */
+            }
+
+            .accordion-date {
+                margin-left: 0;
+                width: 100%;
+                /* 佔滿可用寬度 */
+                text-align: left;
+            }
+
+            .accordion-toggle-icon {
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin-left: 0;
+                /* 重置 */
+            }
+
+            .accordion-item.active .accordion-toggle-icon {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            /* Extra small devices (portrait phones, less than 576px) */
+            .accordion-container {
+                margin: 10px auto;
+                border-radius: 0;
+            }
+
+            .accordion-header {
+                padding: 10px 10px;
+            }
+
+            .accordion-content {
+                padding: 0 10px;
+            }
+
+            .accordion-item.active .accordion-content {
+                padding: 10px 10px;
+            }
+
+            .accordion-title {
+                font-size: 15px;
+            }
+
+            .accordion-date {
+                font-size: 13px;
+            }
+
+            .accordion-toggle-icon {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="accordion-container">
+    </div>
+
+    <script>
+        // JavaScript 程式碼將直接嵌入此處或連結外部JS檔案
+        // 參照 3.3. JavaScript 行為 的內容
+        document.addEventListener('DOMContentLoaded', function () {
+            const accordionContainer = document.querySelector('.accordion-container');
+
+            // 模擬從外部動態取得資料庫內容並顯示
+            function fetchDataAndRenderAccordion() {
+                const mockData = [
+                    {
+                        title: "這是第一篇文章的標題，它可能會很長，需要自動換行以確保可讀性。",
+                        date: "2022-01-19",
+                        content: "回答常見問題的簡單句子，一個較長的段落，或者甚至是一個列表。這是一個範例內容，用來展示固定高度的效果。回答常見問題的簡單句子，一個較長的段落，或者甚至是一個列表。這是一個範例內容，用來展示固定高度的效果。回答常見問題的簡單句子，一個較長的段落，或者甚至是一個列表。這是一個範例內容，用來展示固定高度的效果。回答常見問題的簡單句子，一個較長的段落，或者甚至是一個列表。這是一個範例內容，用來展示固定高度的效果。"
+                    },
+                    {
+                        title: "第二個手風琴項目，包含一些關於產品特色的說明。",
+                        date: "2023-03-01",
+                        content: "我們的產品具有高度的靈活性和可擴展性，能滿足您不斷變化的業務需求。它整合了最新的技術，提供了無縫的使用者體驗。我們的產品具有高度的靈活性和可擴展性，能滿足您不斷變化的業務需求。它整合了最新的技術，提供了無縫的使用者體驗。"
+                    },
+                    {
+                        title: "關於服務條款的重要通知，請仔細閱讀。",
+                        date: "2024-05-15",
+                        content: "使用本服務前，請仔細閱讀並同意我們的服務條款。服務條款可能不時更新，請定期查閱最新版本。使用本服務前，請仔細閱讀並同意我們的服務條款。服務條款可能不時更新，請定期查閱最新版本。"
+                    },
+                    {
+                        title: "常見問題解答，幫助您快速了解。",
+                        date: "2025-01-01",
+                        content: "Q: 如何聯繫客服？ A: 您可以透過電子郵件或電話聯繫我們的客服團隊。 Q: 是否支援多國語言？ A: 是的，我們的系統支援多種語言介面。 Q: 如何聯繫客服？ A: 您可以透過電子郵件或電話聯繫我們的客服團隊。 Q: 是否支援多國語言？ A: 是的，我們的系統支援多種語言介面。"
+                    },
+                    {
+                        title: "最後一個手風琴項目，展示較短的內容。",
+                        date: "2025-05-20",
+                        content: "這是簡短的內容。"
+                    }
+                ];
+
+                // 清空現有內容（如果有的話，以防重複渲染）
+                accordionContainer.innerHTML = '';
+
+                mockData.forEach((data, index) => {
+                    const isActive = index === 0 ? 'active' : ''; // 第一筆預設展開
+                    const itemHTML = `
+                        <div class="accordion-item ${isActive}">
+                            <div class="accordion-header">
+                                <h3 class="accordion-title">${data.title}</h3>
+                                <div class="accordion-date">日期：${data.date}</div>
+                                <span class="accordion-toggle-icon"></span>
+                            </div>
+                            <div class="accordion-content">
+                                <p>${data.content}</p>
+                            </div>
+                        </div>
+                    `;
+                    accordionContainer.insertAdjacentHTML('beforeend', itemHTML);
+                });
+
+                // 重新綁定事件監聽器，因為元素是動態添加的
+                const newAccordionItems = document.querySelectorAll('.accordion-item');
+                newAccordionItems.forEach(item => {
+                    const header = item.querySelector('.accordion-header');
+                    const content = item.querySelector('.accordion-content');
+
+                    header.addEventListener('click', () => {
+                        newAccordionItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.classList.contains('active')) {
+                                otherItem.classList.remove('active');
+                                otherItem.querySelector('.accordion-content').style.maxHeight = '0';
+                            }
+                        });
+
+                        item.classList.toggle('active');
+                        if (item.classList.contains('active')) {
+                            content.style.maxHeight = '150px'; // 固定內容高度
+                        } else {
+                            content.style.maxHeight = '0';
+                        }
+                    });
+                });
+
+                // 確保動態載入後，第一個項目也預設展開並設定高度
+                if (newAccordionItems.length > 0) {
+                    const firstItem = newAccordionItems[0];
+                    firstItem.classList.add('active');
+                    const firstContent = firstItem.querySelector('.accordion-content');
+                    firstContent.style.maxHeight = '150px';
+                }
+            }
+
+            // 在頁面載入完成後模擬載入資料
+            fetchDataAndRenderAccordion();
+        });
+    </script>
+</body>
+
+</html>

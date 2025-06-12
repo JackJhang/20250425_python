@@ -1,0 +1,66 @@
+/* 課程卡片樣式 */
+.course-card {
+    width: 274px; /* 卡片寬度 */
+    height: 180px; /* 卡片高度 */
+    border: 1px solid #ccc; /* 邊框 */
+    padding: 10px; /* 內邊距 */
+    font-family: 'Inter', sans-serif; /* 字體 */
+    position: relative; /* 設置相對定位，用於內部元素的絕對定位 */
+    box-sizing: border-box; /* 邊框和內邊距計算在寬高內 */
+    overflow: hidden; /* 隱藏超出容器的內容 */
+}
+
+/* 群組名稱樣式 */
+.course-group {
+    font-size: 16px; /* 字體大小 */
+    font-weight: 400; /* 字體粗細 */
+    line-height: 1.4em; /* 行高 */
+    color: #1E1E1E; /* 字體顏色 */
+    margin: 0; /* 移除默認外邊距 */
+    position: absolute; /* 絕對定位 */
+    top: -2px; /* 相對於父容器頂部的距離 */
+    left: 3px; /* 相對於父容器左側的距離 */
+}
+
+/* 課程名稱樣式 */
+.course-title {
+    font-size: 24px; /* 字體大小 */
+    font-weight: 600; /* 字體粗細 */
+    line-height: 1.2em; /* 行高 */
+    letter-spacing: -2%; /* 字間距 */
+    color: #000000; /* 字體顏色 */
+    margin: 0; /* 移除默認外邊距 */
+    position: absolute; /* 絕對定位 */
+    top: 22px; /* 相對於父容器頂部的距離 */
+    left: 3px; /* 相對於父容器左側的距離 */
+}
+
+/* 課程詳細資訊樣式 */
+.course-detail {
+    font-size: 15px; /* 字體大小 */
+    font-weight: 300; /* 字體粗細 */
+    line-height: 1.2em; /* 行高 */
+    letter-spacing: -2%; /* 字間距 */
+    color: #000000; /* 字體顏色 */
+    margin: 0; /* 移除默認外邊距 */
+    position: absolute; /* 絕對定位 */
+    left: 32px; /* 相對於父容器左側的距離 */
+}
+
+/* 課程詳細資訊的垂直位置 */
+.course-detail:nth-of-type(1) { top: 68px; } /* 進修人數 */
+.course-detail:nth-of-type(2) { top: 91px; } /* 進修時數 */
+.course-detail:nth-of-type(3) { top: 114px; } /* 進修費用 */
+.course-detail:nth-of-type(4) { top: 137px; } /* 上課時間 */
+.course-detail:nth-of-type(5) { top: 160px; } /* 開始日期 */
+
+
+/* 裝飾線樣式 */
+.decorator-line {
+    width: 3px; /* 線條寬度 */
+    height: 110px; /* 線條高度 */
+    background-color: #D9D9D9; /* 線條顏色 */
+    position: absolute; /* 絕對定位 */
+    top: 68px; /* 相對於父容器頂部的距離 */
+    left: 23px; /* 相對於父容器左側的距離 */
+}

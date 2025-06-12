@@ -1,0 +1,90 @@
+.competition-info {
+    text-align: center;
+    padding: 20px;
+    font-family: sans-serif;
+}
+
+.section-title {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.section-subtitle {
+    font-size: 1.2em;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.competition-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Default to single column for mobile */
+    gap: 20px;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.competition-item {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    /* Ensure items take full width on smaller screens */
+    max-width: 300px;
+    /* Limit individual item width */
+}
+
+.item-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.item-text {
+    padding: 15px;
+    font-size: 1.1em;
+    color: #333;
+    font-weight: bold;
+}
+
+/* RWD Breakpoints */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .competition-grid {
+        grid-template-columns: 1fr 1fr;
+        /* 2 columns */
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .competition-grid {
+        grid-template-columns: 1fr 1fr;
+        /* 2 columns */
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .competition-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        /* 3 columns */
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .competition-grid {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        /* 4 columns */
+    }
+}
