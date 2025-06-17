@@ -2,158 +2,53 @@
 <html lang="zh-Hant">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>永和區房價預測器</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- <link rel="stylesheet" href="./../static/css/style.css"> -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>簡易RWD範例頁面</title>
+    <!-- <link rel="stylesheet" href="../static/css/index.css" /> -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>永和區房價預測器</h1>
-            <p>輸入地址，讓 AI 為您評估房價單價！</p>
-        </header>
+    <header>
+        <h1>我的響應式網站</h1>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">關於我們</a></li>
+                <li><a href="#">服務項目</a></li>
+                <li><a href="#">聯絡我們</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <!-- 主要佈局容器 -->
-        <div class="main-layout-grid">
+    <main>
+        <section class="intro">
+            <h2>歡迎來到我們的網站</h2>
+            <p>這是一個簡單的響應式網頁範例，會根據不同裝置大小調整排版與字體大小。</p>
+            <img src="https://via.placeholder.com/600x300" alt="示意圖片" />
+        </section>
 
-            <!-- ======================= -->
-            <!--   左側：所有輸入控制項   -->
-            <!-- ======================= -->
-            <div class="input-panel">
-                <div class="input-section">
-                    <h2>方法一：只輸入地址</h2>
-                    <div class="form-group">
-                        <label for="address-input">地址（必填）：</label>
-                        <input type="text" id="address-input" placeholder="例如：新北市永和區福和路123號">
-                    </div>
-                </div>
+        <section class="content">
+            <article>
+                <h3>服務一</h3>
+                <p>我們提供專業的網頁設計服務，讓您的網站在各種裝置上都能完美呈現。</p>
+            </article>
+            <article>
+                <h3>服務二</h3>
+                <p>響應式設計讓您的網站自動適應手機、平板與桌機，提升使用者體驗。</p>
+            </article>
+            <article>
+                <h3>服務三</h3>
+                <p>我們也提供SEO優化，幫助您的網站在搜尋引擎中排名更靠前。</p>
+            </article>
+        </section>
+    </main>
 
-                <div class="input-section">
-                    <details open>
-                        <summary>
-                            <h2>方法二：輸入更多特徵 (更準確)</h2>
-                        </summary>
-                        <div class="advanced-features-grid">
-                            <!-- 左半邊 -->
-                            <div class="form-group">
-                                <label for="ping-input">建物總坪數：</label>
-                                <input type="number" id="ping-input" placeholder="例如：30">
-                            </div>
-                            <div class="form-group">
-                                <label for="building-type-input">建物型態：</label>
-                                <select id="building-type-input">
-                                    <option value="">(未指定)</option>
-                                    <option value="公寓">公寓</option>
-                                    <option value="華廈">華廈</option>
-                                    <option value="住宅大樓">住宅大樓</option>
-                                    <option value="套房">套房</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="total-floor-input">總樓層數：</label>
-                                <input type="number" id="total-floor-input" placeholder="例如：12">
-                            </div>
-                            <div class="form-group layout-group">
-                                <label>格局：</label>
-                                <div>
-                                    <input type="number" id="layout-room-input" placeholder="房"> 房
-                                    <input type="number" id="layout-living-input" placeholder="廳"> 廳
-                                    <input type="number" id="layout-bath-input" placeholder="衛"> 衛
-                                </div>
-                            </div>
-                            <!-- 右半邊 -->
-                            <div class="form-group">
-                                <label for="age-input">屋齡：</label>
-                                <input type="number" id="age-input" placeholder="例如：15">
-                            </div>
-                            <div class="form-group">
-                                <label for="material-input">建物結構：</label>
-                                <select id="material-input">
-                                    <option value="">(未指定)</option>
-                                    <option value="鋼筋混凝土造">鋼筋混凝土造</option>
-                                    <option value="加強磚造">加強磚造</option>
-                                    <option value="鋼骨鋼筋混凝土造">鋼骨鋼筋混凝土造</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="current-floor-input">所在樓層：</label>
-                                <input type="number" id="current-floor-input" placeholder="例如：8">
-                            </div>
-                            <div class="form-group">
-                                <label for="parking-type-input">車位類別：</label>
-                                <select id="parking-type-input">
-                                    <option value="">(未指定)</option>
-                                    <option value="坡道平面">坡道平面</option>
-                                    <option value="升降平面">升降平面</option>
-                                    <option value="坡道機械">坡道機械</option>
-                                    <option value="升降機械">升降機械</option>
-                                    <option value="塔式車位">塔式車位</option>
-                                    <option value="其他">其他</option>
-                                </select>
-                            </div>
-                        </div>
-                    </details>
-                </div>
-            </div>
-
-            <!-- ======================= -->
-            <!--   右側：所有輸出與操作   -->
-            <!-- ======================= -->
-            <div class="output-panel">
-                <div class="output-content-wrapper">
-                    <!-- 狀態容器：預設顯示模型性能，點擊後顯示進度 -->
-                    <div id="status-container">
-                        <!-- 【修改點 1】將模型表現區塊包裝起來，以便後續用 JS 控制顯示/隱藏 -->
-                        <div id="performance-section-wrapper">
-                            <div class="performance-section">
-                                <h3>模型表現參考</h3>
-                                <p>
-                                    本模型在歷史測試數據上的平均絕對誤差 (MAE) 為
-                                    <strong>{{ performance.mae }} 萬元/坪</strong>。
-                                    <span class="explanation">
-                                        (範例：對於一間30坪的房子，總價預測平均誤差約 <strong>{{ performance.mae_total_price_example }}
-                                            萬元</strong>。)
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- 【修改點 2】新增一個用於顯示進度訊息的區塊，預設隱藏 -->
-                        <div id="progress-indicator" class="hidden">
-                            <div class="spinner"></div>
-                            <p id="status-text">正在初始化...</p> <!-- 給狀態文字一個 id="status-text" -->
-                        </div>
-                    </div>
-
-                    <!-- 預測結果區：初始時隱藏 -->
-                    <div id="result-section" class="hidden">
-                        <h2>預測結果</h2>
-                        <!-- 【修改點 3】修正 class 名稱，雖然不影響功能，但更符合慣例 -->
-                        <p id="result-text" class="result-value">-</p>
-                        <p id="total-price-text" class="total-price-value"></p>
-                    </div>
-
-                    <!-- 按鈕和免責聲明 -->
-                    <div class="action-section">
-                        <button id="predict-btn">🚀 開始預測</button>
-                    </div>
-                    <p class="disclaimer">免責聲明：本預測結果基於歷史數據與AI模型，僅供學術研究與參考，不構成任何投資或交易建議。</p>
-                </div>
-
-                <footer>
-                    <p>模型基於108-114年實價登錄數據訓練</p>
-                </footer>
-            </div>
-
-        </div> <!-- main-layout-grid 結束 -->
-
-
-    </div>
-    <!-- <script src="./../static/js/main.js"></script> -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <footer>
+        <p>© 2025 我的響應式網站版權所有</p>
+    </footer>
 </body>
 
 </html>
