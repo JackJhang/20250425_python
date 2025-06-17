@@ -1,0 +1,20 @@
+{
+    "blend_method": "weighted_average",
+    "models": [
+        {
+            "path": "FINAL_MODEL_LightGBM.pkl",
+            "name": "FINAL_MODEL_LightGBM",
+            "weight": 0.2259575966834879
+        },
+        {
+            "path": "FINAL_MODEL_RandomForest.pkl", 
+            "name": "FINAL_MODEL_RandomForest",
+            "weight": 0.0
+        },
+        {
+            "path": "FINAL_MODEL_XGBoost.pkl",
+            "name": "FINAL_MODEL_XGBoost",
+            "weight": 0.7740424033165121
+        }
+    ]
+}

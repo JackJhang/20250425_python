@@ -1,0 +1,328 @@
+/* 基本的重置 */
+* {
+    margin: 0;
+    /* 將所有元素的 margin 重置為 0 */
+    padding: 0;
+    /* 將所有元素的 padding 重置為 0 */
+    box-sizing: border-box;
+    /* 讓元素的邊框和 padding 包含在其總寬度和總高度之內，避免排版問題 */
+}
+
+body {
+    margin: 0;
+    /* 移除 body 的預設邊距 */
+    font-family: Arial, sans-serif;
+    /* 設定基本字體 */
+    display: flex;
+    /* 使用 flexbox 佈局 */
+    flex-direction: column;
+    /* flex 子元素垂直排列 */
+    min-height: 100vh;
+    /* body 最小高度為視窗高度 */
+}
+
+main {
+    flex-grow: 1;
+    /* 讓主要內容區域填滿可用空間，將 footer 推至底部 */
+}
+
+/* 導覽列樣式 */
+.navbar {
+    background-color: #ABC9F6;
+    /* 設定導覽列的背景顏色為淺灰色 */
+    display: flex;
+    /* 使用 Flexbox 佈局，讓子元素可以彈性排列 */
+    justify-content: space-between;
+    /* 將子元素（logo 和導覽連結/MENU 按鈕）在主軸上分散對齊，左右貼邊 */
+    align-items: center;
+    /* 將子元素在交叉軸上置中對齊，垂直置中 */
+    padding: 10px 10px;
+    /* 設定導覽列的上下內距為 10px，左右內距為 20px */
+    position: relative;
+    /* 設定導覽列的定位方式為 relative，讓絕對定位的子元素（例如手機版選單）相對於它定位 */
+
+}
+
+.navbar-left {
+    padding: 10px 20px;
+}
+
+
+.navbar-left .logo {
+    font-size: 2em;
+    /* 設定 logo 的字體大小 */
+    color: #333;
+    /* 設定 logo 的文字顏色 */
+    text-decoration: none;
+    /* 移除 logo 連結的底線 */
+    font-weight: bold;
+    /* 設定 logo 的字體加粗 */
+    ;
+}
+
+.navbar-right {
+    display: flex;
+    /* 使用 Flexbox 佈局，讓子元素（導覽連結和 MENU 按鈕）可以彈性排列 */
+    align-items: center;
+    /* 將子元素在交叉軸上置中對齊，垂直置中 */
+    padding: 20px 20px;
+}
+
+.nav-links {
+    list-style: none;
+    /* 移除導覽連結列表的項目符號 */
+    display: flex;
+    /* 使用 Flexbox 佈局，讓導覽連結水平排列 */
+
+}
+
+.nav-links li {
+    margin-left: 20px;
+    /* 設定導覽連結列表項目之間的水平間距 */
+}
+
+.nav-links a {
+    text-decoration: none;
+    /* 移除導覽連結的底線 */
+    color: #333;
+    /* 設定導覽連結的文字顏色 */
+    padding: 5px;
+    /* 設定導覽連結的內距 */
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    /* 設定滑鼠移到導覽連結上時的文字顏色 */
+    background-color: rgb(3, 27, 136);
+    /* 設定滑鼠移到導覽連結上時的背景顏色;*/
+}
+
+.menu-button {
+    display: none;
+    /* 預設隱藏 MENU 按鈕，手機版才顯示 */
+    background-color: #8400ff;
+    /* 設定 MENU 按鈕的背景顏色 */
+    color: white;
+    /* 設定 MENU 按鈕的文字顏色 */
+    border: none;
+    /* 移除 MENU 按鈕的邊框 */
+    padding: 10px 15px;
+    /* 設定 MENU 按鈕的內距 */
+    cursor: pointer;
+    /* 設定滑鼠移到 MENU 按鈕上時的游標樣式為 pointer */
+    margin-left: 10px;
+    /* 設定 MENU 按鈕與導覽連結之間的水平間距 */
+}
+
+/* 主要內容樣式 */
+.content {
+    padding: 20px;
+    /* 設定主要內容區域的內距 */
+    text-align: center;
+    /* 將主要內容區域的文字置中對齊 */
+}
+
+/* 頁尾樣式 */
+/* --- Footer 整體樣式 --- */
+footer {
+    background-color: #ABC9F6;
+    /* 設定 footer 的背景顏色 */
+    color: #333;
+    /* 設定 footer 區域的預設文字顏色 */
+    padding-top: 20px;
+    /* footer 上方內邊距，為內容提供呼吸空間 */
+    padding-bottom: 50px;
+    /* footer 底部內邊距，為絕對定位的版權文字及整體佈局提供空間 */
+    width: 100%;
+    /* footer 寬度為 100% */
+    position: relative;
+    /* 設定為相對定位，作為內部絕對定位元素 .footer-copyright 的基準 */
+
+    /* --- 新增：預設 (大螢幕) 讓 .footer-container 水平垂直置中 --- */
+    display: flex;
+    /* 使用 flexbox 佈局，以控制 .footer-container 的對齊 */
+    justify-content: center;
+    /* 水平置中 .footer-container */
+    align-items: center;
+    /* 垂直置中 .footer-container */
+}
+
+.footer-container {
+    /* 此容器包含 Logo 和導航連結 */
+    max-width: 1200px;
+    /* 設定內容最大寬度 */
+    width: 100%;
+    /* 讓容器在父層 flex 中能正確被置中，並填滿可用寬度直到 max-width */
+    padding: 0 20px;
+    /* 容器內部左右的內邊距，保護內容不貼邊 */
+    display: flex;
+    /* 使用 flexbox 佈局內部的 Logo 和導航連結 */
+    align-items: center;
+    /* 垂直居中對齊 Logo 和導航連結 (在同一行時) */
+    justify-content: center;
+    flex-wrap: wrap;
+    /* 允許 Logo 和導航連結在空間不足時換行 */
+    /* margin: 0 auto; /* 當父層 footer 使用 flex 置中時，此行不再是主要的置中方法 */
+}
+
+/* --- Footer Logo 區塊樣式 --- */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    /* 大螢幕時 Logo 與右方導航連結的間距 */
+    /* margin-bottom: 10px; /* 移除此處的 margin-bottom，在 RWD 中針對性調整 */
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.footer-logo span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* --- Footer 導航連結樣式 --- */
+.footer-nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* margin-bottom: 10px; /* 移除此處的 margin-bottom，在 RWD 中針對性調整 */
+}
+
+.footer-nav a {
+    color: #333;
+    text-decoration: none;
+    margin: 5px 15px;
+    /* 上下5px，左右15px的間距，改善換行時的表現 */
+    font-size: 0.9em;
+    line-height: 1.5;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
+
+/* --- Footer 版權宣告樣式 --- */
+.footer-copyright {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 0.8em;
+    color: #333;
+}
+
+/* 導覽列的RWD樣式 */
+/* 響應式設計 (手機版) */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* 初始狀態隱藏，由 JavaScript 控制顯示 */
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #ddd;
+        width: 100%;
+        padding: 10px 20px;
+        z-index: 10;
+        max-width: 200px;
+    }
+
+    .nav-links li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    .menu-button {
+        display: block;
+        background-color: #8400ff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .navbar {
+        flex-direction: row;
+    }
+
+    .navbar-right {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+}
+
+
+/*footer的RWD樣式*/
+/* --- 響應式設計：針對不同螢幕尺寸的調整 --- */
+
+/* 中型螢幕及以下 (例如：平板電腦、手機) - 小螢幕時 .footer-container 靠左對齊 */
+@media (max-width: 992px) {
+    footer {
+        justify-content: flex-start;
+        /* .footer-container 水平靠左對齊 */
+        align-items: flex-start;
+        /* .footer-container 垂直靠上對齊 (在 footer 的 padding 內) */
+    }
+
+    .footer-container {
+        flex-direction: column;
+        /* Logo 和導航改為垂直堆疊 */
+        align-items: flex-start;
+        /* 堆疊的項目在 .footer-container 內靠左對齊 */
+        padding-top: 0;
+        /* 確保堆疊內容從容器頂部開始 */
+        padding-bottom: 0;
+        /* 確保堆疊內容底部無額外間距 */
+    }
+
+    .footer-logo {
+        margin-right: 0;
+        /* 垂直排列時，移除 Logo 的右邊距 */
+        margin-bottom: 15px;
+        /* Logo 與下方導航的間距 */
+        width: auto;
+        /* 讓 Logo 寬度由內容決定，配合 align-items: flex-start */
+    }
+
+    .footer-nav {
+        flex-direction: column;
+        /* 導航連結本身也垂直堆疊 */
+        align-items: flex-start;
+        /* 導航連結在 .footer-nav 內靠左對齊 */
+        width: 100%;
+        /* 讓導航容器佔滿可用寬度，確保連結靠左 */
+    }
+
+    .footer-nav a {
+        margin: 8px 0;
+        /* 垂直排列的導航連結上下間距，左右設為0使其完全靠左 */
+    }
+
+    /* 版權文字的絕對定位在大多數情況下依然有效 */
+    .footer-copyright {
+        /* 可根據需要在更小螢幕調整，例如字體大小或位置 */
+    }
+}
+
+/* 更小型螢幕 (例如：手機) - 細化調整 */
+@media (max-width: 576px) {
+    .footer-logo span {
+        font-size: 1em;
+    }
+
+    .footer-nav a {
+        font-size: 0.8em;
+    }
+
+    .footer-copyright {
+        font-size: 0.7em;
+        /* 若需要在極小螢幕上，讓版權文字換行且靠右，可以設定 max-width */
+        /* 例如： max-width: calc(100% - 40px); right: 20px; text-align: right; */
+    }
+}
