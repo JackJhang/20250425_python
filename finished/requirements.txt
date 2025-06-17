@@ -1,3 +1,10 @@
+requests
+Flask
+psycopg-binary
+psycopg2-binary
+python-dotenv
+gunicorn
+
 alembic==1.16.1
 blinker==1.9.0
 catboost==1.2.8
