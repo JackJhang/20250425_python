@@ -413,7 +413,7 @@ def index():
 
 @app.route("/index")
 def index2():
-    return render_template("index.html")
+    return render_template("index.html.jinja2")
 
 
 @app.route("/classes", defaults={'course_type': '一般課程'})
